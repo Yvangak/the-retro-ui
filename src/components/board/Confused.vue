@@ -10,5 +10,20 @@
                 <i class="hand point right icon"></i>
             </div>
         </div>
+        <app-feeling v-for="feeling in feelings" :feeling="feeling" :key="feeling.id"></app-feeling>
     </div>
 </template>
+<script>
+    import Feeling from './Feeling.vue';
+
+    export default {
+        components: {
+            appFeeling: Feeling,
+        },
+        computed: {
+            feelings(){
+                return this.$store.getters.getLoadedData
+            }
+        },
+    };
+</script>

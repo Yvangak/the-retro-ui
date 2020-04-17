@@ -14,5 +14,10 @@
         components: {
             appHeader: Header,
         },
+        created() {
+            this.$store.dispatch('loadHappyFeelings');
+            this.$store.dispatch('loadConfusedData');
+            this.$store.dispatch('loadSadFeelingsData');
+        }
     };
 </script>

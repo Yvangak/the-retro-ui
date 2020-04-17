@@ -12,7 +12,7 @@
                 <i class="hand point right icon"></i>
             </div>
         </div>
-        <Feeling></Feeling>
+        <app-Feeling v-for="feeling in feelings" :feeling="feeling" :key="feeling.id"></app-Feeling>
     </div>
 </template>
 <script>
@@ -20,7 +20,12 @@
 
     export default {
         components: {
-            Feeling,
+            appFeeling: Feeling,
+        },
+        computed: {
+            feelings(){
+                return this.$store.getters.getHappyFeelings;
+            }
         },
     };
 </script>

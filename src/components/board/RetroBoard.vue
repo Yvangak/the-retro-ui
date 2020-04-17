@@ -13,13 +13,13 @@
         </div>
         <div class="ui grid">
             <div class="four wide column">
-                <HappyFeelings></HappyFeelings>
+                <app-happy></app-happy>
             </div>
             <div class="four wide column">
-                <ConfusedFeelings></ConfusedFeelings>
+                <app-confused></app-confused>
             </div>
             <div class="four wide column">
-                <SadFeelings></SadFeelings>
+                <app-sad></app-sad>
             </div>
             <div class="four wide column">
                 <ActionItems></ActionItems>
@@ -28,16 +28,16 @@
     </div>
 </template>
 <script>
-    import HappyFeelings from './HappyFeelings.vue';
-    import ConfusedFeelings from './ConfusedFeelings.vue';
-    import SadFeelings from './SadFeelings.vue';
+    import Happy from './Happy.vue';
+    import Confused from './Confused.vue';
+    import Sad from './Sad.vue';
     import ActionItems from './ActionItems.vue';
 
     export default {
         components: {
-            HappyFeelings,
-            ConfusedFeelings,
-            SadFeelings,
+            appHappy: Happy,
+            appConfused: Confused,
+            appSad: Sad,
             ActionItems,
         },
     };
