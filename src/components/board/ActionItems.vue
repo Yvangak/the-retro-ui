@@ -4,11 +4,12 @@
             <span class="ui blue ribbon label"><i class="book icon" style="font-size: 14pt"></i> </span>
             Action Items
         </div>
-        <div class="ui blue center aligned  segment">
-            <div class="ui left icon input">
-                <input type="text" placeholder="Feeling goes here...">
-                <i class="hand point right icon"></i>
-            </div>
+        <div class="ui fluid icon input">
+            <input type="text" placeholder="Action Item goes here...">
+            <i class="pencil alternate icon"></i>
         </div>
+        <h4 class="ui horizontal divider header">
+            <i class="minus icon"></i>
+        </h4>
     </div>
 </template>

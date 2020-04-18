@@ -7,7 +7,7 @@
                 </div>
                 <img class="left floated mini ui image" src="../../assets/user.png">
                 <div class="meta">
-                    {{feeling.owner}}
+                    {{feeling.author}}
                 </div>
                 <div class="description">
                     {{feeling.description}}
@@ -19,7 +19,7 @@
                         <div class="ui blue button" @click="incrementCounter">
                             <i class="star icon"></i>
                         </div>
-                        <span class="ui basic blue left pointing label">{{feeling.counter}} </span>
+                        <span class="ui basic blue left pointing label">{{feeling.stars}} </span>
                     </div>
                     <div class="ui basic green button">&nbsp;<i class="check icon"></i></div>
                 </div>
@@ -32,8 +32,8 @@
         props: ['feeling'],
         methods: {
             incrementCounter(){
-                this.feeling.counter += 1;
-                return this.feeling.counter;
+                this.feeling.stars += 1;
+                return this.feeling.stars;
             }
         }
     }
