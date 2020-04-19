@@ -6,13 +6,18 @@
         </div>
         <div class="ui fluid icon input" :class="{error: isValid}">
             <input type="text" placeholder="Your feeling goes here..." v-model="descriptionModel"
-                   @keyup.enter="addFeeling ">
+                   @keyup.enter="add">
             <i class="pencil alternate icon"></i>
         </div>
         <h4 class="ui horizontal divider header">
             <i class="minus icon"></i>
         </h4>
-        <app-feeling v-for="feeling in feelings" :feeling="feeling" :key="feeling.id"></app-feeling>
+        <app-feeling v-for="feeling in feelings"
+                     :feeling="feeling"
+                     :key="feeling.id"
+                     @editFeeling="edit"
+                     @removeFeeling="remove">
+        </app-feeling>
     </div>
 </template>
 <script>
@@ -37,17 +42,25 @@
         methods: {
             ...mapActions({
                 savedConfusedFeeling: 'addConfusedFeeling',
+                editConfusedFeeling: 'updateConfusedFeeling',
+                removeConfusedFeeling: 'deleteConfusedFeeling'
             }),
-            addFeeling() {
-                if(this.descriptionModel.trim()!==''){
+            add() {
+                if (this.descriptionModel.trim() !== '') {
                     this.savedConfusedFeeling(this.descriptionModel);
                     this.descriptionModel = '';
                     this.isValid = false;
-                }else{
+                } else {
                     this.isValid = true;
                 }
 
             },
+            edit(feelingModel){
+                this.editConfusedFeeling(feelingModel);
+            },
+            remove(feelingModel){
+                this.removeConfusedFeeling(feelingModel);
+            }
         },
     };
 </script>

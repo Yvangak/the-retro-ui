@@ -16,6 +16,24 @@ const mutations = {
         };
         state.confusedFeelings.push(feeling);
     },
+    'UPDATE_CONFUSED_DATA'(state, data) {
+        const record = state.confusedFeelings.find(
+                item => item.id === data.id,
+        );
+        if (record) {
+            record.stars = data.stars;
+            record.status = data.status;
+        }
+    },
+    'DELETE_CONFUSED_DATA'(state, data) {
+        const record = state.confusedFeelings.find(
+                item => item.id === data.id,
+        );
+        if (record) {
+            state.confusedFeelings.splice(
+                    state.confusedFeelings.indexOf(record), 1);
+        }
+    },
 };
 
 const actions = {
@@ -24,6 +42,12 @@ const actions = {
     },
     addConfusedFeeling: ({commit}, feelingDescription) => {
         commit('ADD_CONFUSED_DATA', feelingDescription);
+    },
+    updateConfusedFeeling: ({commit}, data) => {
+        commit('UPDATE_CONFUSED_DATA', data);
+    },
+    deleteConfusedFeeling: ({commit}, data) => {
+        commit('DELETE_CONFUSED_DATA', data);
     },
 };
 
