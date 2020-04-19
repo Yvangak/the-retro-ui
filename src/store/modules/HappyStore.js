@@ -12,9 +12,26 @@ const mutations = {
             description: feelingDescription,
             author: 'Author Names - ' + state.happyFeelings.length + 1,
             stars: 1,
-            status: 'PENDING'
+            status: 'PENDING',
         };
         state.happyFeelings.push(feeling);
+    },
+    'UPDATE_HAPPY_FEELING'(state, feeling) {
+        const record = state.happyFeelings.find(
+                item => item.id === feeling.id,
+        );
+        if (record) {
+            record.stars = feeling.stars;
+            record.status = feeling.status;
+        }
+    },
+    'DELETE_HAPPY_FEELING'(state, feeling) {
+        const record = state.happyFeelings.find(
+                item => item.id === feeling.id,
+        );
+        if (record) {
+            state.happyFeelings.splice(state.happyFeelings.indexOf(record), 1);
+        }
     },
 };
 
@@ -24,6 +41,12 @@ const actions = {
     },
     addHappyFeeling: ({commit}, feelingDescription) => {
         commit('ADD_HAPPY_FEELING', feelingDescription);
+    },
+    updateHappyFeeling({commit}, feeling) {
+        commit('UPDATE_HAPPY_FEELING', feeling);
+    },
+    deleteHappyFeeling({commit}, feeling) {
+        commit('DELETE_HAPPY_FEELING', feeling);
     },
 };
 
