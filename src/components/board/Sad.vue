@@ -12,7 +12,12 @@
         <h4 class="ui horizontal divider header">
             <i class="minus icon"></i>
         </h4>
-        <app-feeling v-for="feeling in feelings" :feeling="feeling" :key="feeling.id"></app-feeling>
+        <app-feeling v-for="feeling in feelings"
+                     :feeling="feeling"
+                     :key="feeling.id"
+                     @editFeeling="edit"
+                     @removeFeeling="remove">
+        </app-feeling>
     </div>
 </template>
 <script>
@@ -37,6 +42,8 @@
         methods: {
             ...mapActions({
                 saveSadFeeling: 'addSadFeeling',
+                editSadFeeling: 'updateSadFeeling',
+                removeSadFeeling: 'deleteSadFeeling',
             }),
             addFeeling() {
                 if (this.descriptionModel.trim() !== '') {
@@ -46,6 +53,12 @@
                 } else {
                     this.isValid = true;
                 }
+            },
+            edit(feelingModel) {
+                this.editSadFeeling(feelingModel);
+            },
+            remove(feelingModel) {
+                this.removeSadFeeling(feelingModel);
             },
         },
     };
