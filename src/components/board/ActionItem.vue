@@ -15,7 +15,9 @@
                 <div class="center aligned author">
                     <div v-if="hasOwner">
                         <img class="ui avatar image" src="../../assets/nerd-guy.png"> {{actionItem.owner}}
-                        <button class="right floated mini basic blue button ui" @click="changeOwner">
+                        <button class="right floated mini basic blue button ui"
+                                @click="changeOwner"
+                                :disabled="isCompleted">
                             &nbsp;&nbsp;<i class="redo icon"></i>
                         </button>
                     </div>
