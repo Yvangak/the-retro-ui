@@ -13,11 +13,16 @@
         <h4 class="ui horizontal divider header">
             <i class="minus icon"></i>
         </h4>
-        <app-action-item></app-action-item>
+        <app-action-item v-for="actionItem in actionsItems"
+                         :actionItem="actionItem"
+                         :key="actionItem.id"
+                         @editActionItem="assign"
+                         @deleteActionItem="remove"/>
     </div>
 </template>
 <script>
     import ActionItem from './ActionItem';
+    import {mapActions} from 'vuex';
 
     export default {
         data() {
@@ -29,14 +34,32 @@
         components: {
             appActionItem: ActionItem,
         },
+        computed: {
+            actionsItems() {
+                return this.$store.getters.loadActionItems;
+            },
+        },
         methods: {
-            saveActionItem(){
-                if(this.actionDescription.trim()!==''){
+            ...mapActions({
+                save: 'saveAction',
+                edit: 'updateAction',
+                delete: 'deleteAction',
+            }),
+            saveActionItem() {
+                if (this.actionDescription.trim() !== '') {
                     this.isValid = false;
-                }else{
+                    this.save(this.actionDescription);
+                    this.actionDescription = '';
+                } else {
                     this.isValid = true;
                 }
-            }
-        }
+            },
+            assign(actionItem) {
+                this.edit(actionItem);
+            },
+            remove(id) {
+                this.delete(id);
+            },
+        },
     };
 </script>

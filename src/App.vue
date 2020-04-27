@@ -18,6 +18,7 @@
             this.$store.dispatch('loadHappyFeelings');
             this.$store.dispatch('loadConfusedData');
             this.$store.dispatch('loadSadFeelingsData');
+            this.$store.dispatch('loadActions');
         }
     };
 </script>

@@ -5,7 +5,7 @@
                 <button class="right floated mini basic red button ui" @click="removeFeeling" :disabled="isCompleted">
                     &nbsp&nbsp<i class="trash icon"></i>
                 </button>
-                <img class="left floated mini ui image" src="../../assets/user.png">
+                <img class="left floated mini ui image" src="../../assets/nerd-lady.png">
                 <div class="meta">
                     {{feeling.author}}
                 </div>
