@@ -15,6 +15,9 @@
                 <div class="center aligned author">
                     <div v-if="hasOwner">
                         <img class="ui avatar image" src="../../assets/nerd-guy.png"> {{actionItem.owner}}
+                        <button class="right floated mini basic blue button ui" @click="changeOwner">
+                            &nbsp;&nbsp;<i class="redo icon"></i>
+                        </button>
                     </div>
                     <div class="ui basic button simple dropdown item" v-if="!hasOwner">
                         <i class="user icon"></i> Choose responsible
@@ -30,10 +33,16 @@
             </div>
             <div class="extra content center aligned">
                 <div class="ui buttons">
-                    <button class="ui positive button" @click="markAsComplete"
-                            :disabled="isCompleted"><i class="check icon"></i></button>
+                    <button class="ui positive button"
+                            @click="markAsComplete"
+                            :disabled="isCompleted">
+                        <i class="check icon"></i>
+                    </button>
                     <div class="or"></div>
-                    <button class="ui negative button" @click="removeActionItem"><i class="trash icon"></i></button>
+                    <button class="ui negative button"
+                            @click="removeActionItem">
+                        <i class="trash icon"></i>
+                    </button>
                 </div>
             </div>
         </div>
@@ -52,9 +61,9 @@
             hasOwner() {
                 return this.actionItem.owner !== null;
             },
-            isCompleted(){
+            isCompleted() {
                 return this.actionItem.status === 'COMPLETED';
-            }
+            },
         },
         methods: {
             selectOwner(owner) {
@@ -73,9 +82,12 @@
                 };
                 this.$emit('editActionItem', item);
             },
-            removeActionItem(){
+            removeActionItem() {
                 this.$emit('deleteActionItem', this.actionItem.id);
-            }
+            },
+            changeOwner() {
+                this.$emit('resetOwner', this.actionItem);
+            },
         },
     };
 </script>

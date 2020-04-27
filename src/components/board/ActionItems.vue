@@ -17,7 +17,8 @@
                          :actionItem="actionItem"
                          :key="actionItem.id"
                          @editActionItem="assign"
-                         @deleteActionItem="remove"/>
+                         @deleteActionItem="remove"
+                         @resetOwner="resetOwner"/>
     </div>
 </template>
 <script>
@@ -59,6 +60,10 @@
             },
             remove(id) {
                 this.delete(id);
+            },
+            resetOwner(actionItem) {
+                actionItem.owner = null;
+                this.edit(actionItem);
             },
         },
     };
